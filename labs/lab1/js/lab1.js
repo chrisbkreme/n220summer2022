@@ -1,3 +1,11 @@
+// filename: lab1.js
+// author:   Chris Barnett
+// purpose:  add function to lab1.html
+//              - update changing colors
+//              - draw shapes with mouse click
+//              - draw shapes in random positions
+
+
 const colors = {
     'white' : [255, 255, 255],
     'red' : [255, 0, 0],
