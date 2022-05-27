@@ -1,4 +1,4 @@
-// filename: fzz.js
+// filename: fizz.js
 // author:   Chris Barnett
 // purpose:  add function to fizz.html
 //               - draw circles
