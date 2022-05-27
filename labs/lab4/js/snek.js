@@ -25,18 +25,18 @@ function setup() {
 
 function draw() {
 
-    background(127)
-
     // don't move snake if mouse is still
     if (mouseX != pmouseX || mouseY != pmouseY) {
+
+        background(127)
 
         // change both positions in-place with few operations
         p[queue_head%10] = [mouseX,mouseY];
         queue_head++;
 
-    }
+        // draw each circle
+        for(var i=0;i<p.length;i++) circle(p[i][0],p[i][1],30);
 
-    // draw each circle
-    for(var i=0;i<p.length;i++) circle(p[i][0],p[i][1],30);
+    }
 
 }
