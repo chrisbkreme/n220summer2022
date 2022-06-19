@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
         let the_div = document.getElementById('div_'+i);
 
         // set initial style
-        the_div.style.background = '#555';
+        the_div.style.background = '#999';
         the_div.style.width = '200px';
         the_div.style.height = '200px';
         the_div.style.float = 'left';
