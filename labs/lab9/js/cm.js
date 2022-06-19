@@ -6,7 +6,7 @@
 
 var rgb = [0,0,0];
 
-window.addEventListener('load',function() {
+window.addEventListener('load', () => {
 
     // initial div styling
     document.getElementById('the_div').style.width = document.documentElement.clientWidth - 20 + 'px';
