@@ -8,14 +8,15 @@
 var clicked = 0;
 var batt_level = 'not supported in this browser';
 
-window.addEventListener('load',function() {
+window.addEventListener('load', () => {
 
     buttons = document.getElementsByTagName('button');
 
     // iterate through buttons
     for(let i=0;i<buttons.length;i++) {
 
-        buttons[i].addEventListener('click', function(e) {
+        // add event listener to execute some code if needed, then output the answer to the div
+        buttons[i].addEventListener('click', (e) => {
 
             try {
 
@@ -34,3 +35,10 @@ window.addEventListener('load',function() {
     }
 
 });
+
+// had to make a separate function because the getBattery promise resolved too slow
+function update_batt(b) {
+
+    document.getElementById('the_div').textContent = b.level * 100 + '%';
+
+}

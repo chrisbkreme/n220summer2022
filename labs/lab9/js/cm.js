@@ -1,7 +1,8 @@
 // filename: cm.js
 // author:   Chris Barnett
-// purpose:  add function to db7.html
-//               - 
+// purpose:  add function to cm.html
+//               - make buttons increment rgb values by 1, 5, and 10
+//               - output rgb values as a string and as the background color of a div
 
 var rgb = [0,0,0];
 
@@ -18,11 +19,7 @@ window.addEventListener('load',function() {
     for(let i=0;i<buttons.length;i++) {
 
         // add event listener to add to color with click
-        buttons[i].addEventListener('click', function(e) {
-
-            add_color(e.currentTarget);
-
-        });
+        buttons[i].addEventListener('click', (e) => add_color(e.currentTarget));
 
     }
 

@@ -4,7 +4,7 @@
 //               - change style of 3 divs when clicked
 
 
-window.addEventListener('load',function() {
+window.addEventListener('load', () => {
     
     // loop through divs
     for(let i=0;i<3;i++) {
@@ -18,9 +18,7 @@ window.addEventListener('load',function() {
         the_div.style.float = 'left';
 
         // call change_styles when clicked, passing itself as an html element
-        the_div.addEventListener('click', function(e) {
-            change_color(e.currentTarget);
-        });
+        the_div.addEventListener('click', (e) => change_color(e.currentTarget));
 
     }
 
