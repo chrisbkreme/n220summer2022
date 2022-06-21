@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Flash cards</title>
+        <script src="js/fc.js"></script>
+    </head>
+    <body>
+        <h2>Flash cards</h2>
+        <br />
+
+        <button data-answer="3">How many buttons are on this page?</button>
+
+        <!-- battery status supported in chromium browsers -->
+        <button data-answer="batt_level" data-exec="navigator.getBattery().then(function (b) {update_batt(b);})">What is the battery level of this device?</button>
+
+        <button data-answer="clicked" data-exec="clicked++;">How many times has this button been clicked?</button>
+        
+        <br /><br />
+        <div id="the_div"></div>
+    </body>
+</html>

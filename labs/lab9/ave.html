@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>It's just average</title>
+        <script src="js/ave.js"></script>
+    </head>
+    <body>
+        <h2>It's just average</h2>
+        <br />
+        <input type="radio" id="text_radio" name="source" checked>
+        <label for="text_radio">text input</label>
+        <input type="radio" id="file_radio" name="source">
+        <label for="file_radio">file input</label>
+        <br /><br />
+        <div id="text_input">
+            <label for="csv_text">input csv text: </label>
+            <input type="text" id="csv_text" name="csv_text">
+            <br />
+            <button>go</button>
+        </div>
+        <div id="file_input" style="display: none;">
+            <input type="file" id="csv_file" accept=".csv, .txt">
+            <input type="radio" id="no_behavior" name="csv_behavior" checked>
+            <label for="no_behavior">Treat whole file as one array</label>
+            <input type="radio" id="yes_behavior" name="csv_behavior">
+            <label for="yes_behavior">Treat newlines as new arrays</label>
+            <br />
+            <button>go</button>
+        </div>
+        <br /><br /><br />
+        <div id="output_container"></div>
+    </body>
+</html>
