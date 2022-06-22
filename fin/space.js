@@ -16,6 +16,11 @@ var canvas_height = document.documentElement.clientHeight - 10;
 var player_height = canvas_height * 0.9
 
 
+// explosion class
+// i was going for a 50px by 50px grid of squares
+// that increases in number of squares at every stage
+// but i can't figure it out for some reason
+
 class Explosion {
 
     constructor(x,y) {
@@ -26,11 +31,12 @@ class Explosion {
 
     draw() {
 
+        // create a grid of squares
         for(let m=0;m<this.stage;m++) {
 
             for(let n=0;n<this.stage;n++) {
 
-                square(this.x + m*50/this.stage, this.y + n*50/this.stage,50/this.stage+1);
+                square(this.x + m*50, this.y + n*50,50/this.stage+1);
 
             }
 
@@ -99,15 +105,19 @@ function preload() {
 
 function setup() {
 
+    // initial game values
     invaders = [];
     shots = [];
     invader_shots = [];
     explosions = [];
+
+    // canvas is window-sized
     createCanvas(document.documentElement.clientWidth-10,document.documentElement.clientHeight-10);
     background(20);
     fill(255);
     stroke(255);
 
+    // load invader image
     img.loadPixels();
 
     // populate invaders
@@ -151,15 +161,28 @@ function draw() {
         // update invader positions after wait
         if (tick-last_moved >= move_wait) {
             last_moved = tick;
+
+    
             if (x_count > 0) {
+
+                // if invaders haven't moved horizontally enough times,
+                // move horizontally again
+
                 x_count--;
                 for(var i=0;i<invaders.length;i++) {
                     invaders[i].update(8*x_dir,0);
                 }
+
             } else {
+
+                // if invaders have moved horizontally enough times,
+                // reset horizontal movement in other direction
+                // and move vertically
+
                 x_dir *= -1;
                 x_count = 10;
                 for(var i=0;i<invaders.length;i++) {
+
                     invaders[i].update(0,canvas_height/50);
 
                     // game over if player is reached
@@ -194,6 +217,7 @@ function draw() {
                 
                 invader_shots[i].draw();
                 invader_shots[i].update();
+
                 if (invader_shots[i].y > 1200) invader_shots.splice(i,1);
 
             } catch (e) {}
@@ -210,8 +234,6 @@ function draw() {
             } catch (e) {}
 
         }
-
-
 
         // shot-invader collision handling
         for(var i=0;i<shots.length;i++) {
