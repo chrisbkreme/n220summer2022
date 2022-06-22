@@ -21,6 +21,8 @@ var player_height = canvas_height * 0.9
 // that increases in number of squares at every stage
 // but i can't figure it out for some reason
 
+// the current effect seems explosionish
+
 class Explosion {
 
     constructor(x,y) {
@@ -96,6 +98,8 @@ class Shot {
 
 }
 
+
+// p5 preload for invader image
 function preload() {
 
     img = loadImage('invader.png');
@@ -223,11 +227,12 @@ function draw() {
             } catch (e) {}
         }
 
-
+        // draw and update explosions
         for(var i=0;i<explosions.length;i++) {
 
             try {
 
+                // limit to 8 stages
                 if (explosions[i].stage < 9) explosions[i].draw();
                 else explosions.splice(i,1);
 
@@ -239,13 +244,21 @@ function draw() {
         for(var i=0;i<shots.length;i++) {
             for(var j=0;j<invaders.length;j++) {
                 try {
+
+                    // check if invader and shot occupy same area
                     if(shots[i].x >= invaders[j].x && shots[i].x < invaders[j].x+50 && shots[i].y >= invaders[j].y && shots[i].y < invaders[j].y+50) {
+
+                        // if they do, create new explosion at invader position,
+                        // update game variables,
+                        // and remove shot and invader from screen
                         explosions.push(new Explosion(invaders[j].x,invaders[j].y));
                         move_wait -= 1.5;
                         shots.splice(i,1);
                         invaders.splice(j,1);
                         score++;
+
                     }
+
                 } catch (e) {}
             }
         }
