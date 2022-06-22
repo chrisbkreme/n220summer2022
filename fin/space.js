@@ -30,7 +30,7 @@ class Explosion {
 
             for(let n=0;n<this.stage;n++) {
 
-                square(this.x + m*50,this.y + n*50,50/this.stage+1);
+                square(this.x + m*50/this.stage + 50/this.stage,this.y + n*50/this.stage + 50/this.stage,50/this.stage+1);
 
             }
 
