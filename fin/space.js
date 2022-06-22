@@ -191,7 +191,7 @@ function draw() {
         if (invaders.length == 0) game_over = 1;
 
         // print score at bottom
-        text('score: ' + score, 550, 550);
+        text('score: ' + score, canvas_width*.75, canvas_height - 90);
         
         tick++;
         
@@ -199,10 +199,10 @@ function draw() {
 
         // end screen 
         background(20);
-        if (invaders.length == 0) text('you win', 400, 300);
-        else text('you lose', 400, 300);
-        text('score: ' + score, 400, 390);
-        text('press any key to restart', 400, 500);
+        if (invaders.length == 0) text('you win', canvas_width / 2, 300);
+        else text('you lose', canvas_width / 2, 300);
+        text('score: ' + score, canvas_width /2, 390);
+        text('press any key to restart', canvas_width  / 2, 500);
 
         if (mouseIsPressed === true || keyIsPressed === true) setup();
     }
