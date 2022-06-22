@@ -85,7 +85,7 @@ function setup() {
     // populate invaders
     for(var i=0; i<8;i++) {
         for(var j=0;j<5;j++) {
-            invaders.push(new Invader(i*90,j*90));
+            invaders.push(new Invader(i*canvas_width / 8 - canvas_width / 8 / 2,j*90));
         }
     }
 
