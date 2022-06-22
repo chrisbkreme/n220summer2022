@@ -10,9 +10,12 @@ var x_count,x_dir;
 var tick, mult, last_shot, score, game_over, move_wait,last_moved;
 var img;
 
+var canvas_width = document.documentElement.clientWidth - 10;
+var canvas_height = document.documentElement.clientHeight - 10;
+var player_height = canvas_height * 0.9
+
 
 // invader class
-// theyre just squares
 class Invader {
 
     constructor(x,y) {
@@ -31,10 +34,9 @@ class Invader {
         }
     }
 
-    // draw a square
+    // draw an image
     draw() {
-        //square(this.x, this.y, 50);
-        image(img,this.x,this.y,50,50)
+        image(img,this.x,this.y,50,50);
     }
 
 }
@@ -47,7 +49,7 @@ class Shot {
     constructor(x,y) {
         this.x = x;
         this.y = y;
-        if (y == 490) this.dir = 1;
+        if (y == player_height) this.dir = 1;
         else this.dir = -1;
     }
 
@@ -110,8 +112,8 @@ function draw() {
         background(20);
 
         // draw player
-        rect(mouseX-25,500,50,10);
-        square(mouseX-5,490,10);
+        rect(mouseX-25,player_height + 10,50,10);
+        square(mouseX-5,player_height,10);
 
         // draw invaders
         for(var i=0;i<invaders.length;i++) {
@@ -133,7 +135,7 @@ function draw() {
                     invaders[i].update(0,5);
 
                     // game over if player is reached
-                    if (invaders[i].y >= 450) {
+                    if (invaders[i].y >= player_height - 60) {
                         game_over = 1;
                     }
                 }
@@ -143,7 +145,7 @@ function draw() {
         // shoot with mouse or key after wait
         if ((mouseIsPressed === true || keyIsPressed === true) && tick-last_shot > 30) {
             last_shot = tick;
-            shots.push(new Shot(mouseX,490));
+            shots.push(new Shot(mouseX,player_height));
         }
 
         // draw and update player shots
@@ -160,7 +162,7 @@ function draw() {
         for (var i=0;i<invader_shots.length;i++) {
             try {
                 // game over if player is hit by invader shot
-                if (invader_shots[i].x >= mouseX-25 && invader_shots[i].x <= mouseX + 25 && invader_shots[i].y >= 490 && invader_shots[i].y <= 510) game_over = 1;
+                if (invader_shots[i].x >= mouseX-25 && invader_shots[i].x <= mouseX + 25 && invader_shots[i].y >= player_height && invader_shots[i].y <= 510) game_over = 1;
                 
                 invader_shots[i].draw();
                 invader_shots[i].update();
