@@ -132,7 +132,7 @@ function draw() {
                 x_dir *= -1;
                 x_count = 10;
                 for(var i=0;i<invaders.length;i++) {
-                    invaders[i].update(0,5);
+                    invaders[i].update(0,canvas_height/50);
 
                     // game over if player is reached
                     if (invaders[i].y >= player_height - 60) {
