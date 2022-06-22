@@ -24,8 +24,18 @@
             <label for="no_behavior">Treat whole file as one array</label>
             <input type="radio" id="yes_behavior" name="csv_behavior">
             <label for="yes_behavior">Treat newlines as new arrays</label>
-            <br />
-            <button>go</button>
+            <br /><br />
+            <button>go (file input)</button>
+            <br /><br />
+            <p>
+                demo csv files hosted on n220.cbkr.me/labs/lab9<br />
+                small csv is 500x8000 random integers (15 MB)<br />
+                medium is 5000x8000 random integers (155 MB)
+            </p>
+            <button>click here to download and use small csv <span id="small_progress"></span></button>
+            <button>click here to download and use medium csv <spaan id="medium_progress"></spaan></button>
+            <br /><br />
+            <button>go (downloaded file)</button>
         </div>
         <br /><br /><br />
         <div id="output_container"></div>
