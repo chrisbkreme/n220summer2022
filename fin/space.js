@@ -34,7 +34,7 @@ class Invader {
     // draw a square
     draw() {
         //square(this.x, this.y, 50);
-        Image(img,this.x,this.y,50,50)
+        image(img,this.x,this.y,50,50)
     }
 
 }
