@@ -162,7 +162,7 @@ function draw() {
         for (var i=0;i<invader_shots.length;i++) {
             try {
                 // game over if player is hit by invader shot
-                if (invader_shots[i].x >= mouseX-25 && invader_shots[i].x <= mouseX + 25 && invader_shots[i].y >= player_height && invader_shots[i].y <= 510) game_over = 1;
+                if (invader_shots[i].x >= mouseX-25 && invader_shots[i].x <= mouseX + 25 && invader_shots[i].y >= player_height && invader_shots[i].y <= player_height + 20) game_over = 1;
                 
                 invader_shots[i].draw();
                 invader_shots[i].update();
