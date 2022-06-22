@@ -191,7 +191,7 @@ function draw() {
         if (invaders.length == 0) game_over = 1;
 
         // print score at bottom
-        text('score: ' + score, canvas_width*.75, canvas_height - 90);
+        text('score: ' + score, canvas_width*.75, canvas_height - 60);
         
         tick++;
         
