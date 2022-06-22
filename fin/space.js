@@ -6,6 +6,7 @@
 var invaders;
 var shots;
 var invader_shots;
+var explosions;
 var x_count,x_dir;
 var tick, mult, last_shot, score, game_over, move_wait,last_moved;
 var img;
@@ -14,6 +15,32 @@ var canvas_width = document.documentElement.clientWidth - 10;
 var canvas_height = document.documentElement.clientHeight - 10;
 var player_height = canvas_height * 0.9
 
+
+class Explosion {
+
+    constructor(x,y) {
+        this.x = x;
+        this.y = y;
+        this.stage = 1;
+    }
+
+    draw() {
+
+        for(let m=0;m<this.stage;m++) {
+
+            for(let n=0;n<this.stage;n++) {
+
+                square(this.x + m*50/this.stage,this.y + n*50/this.y,50/this.stage+1);
+
+            }
+
+        }
+
+        this.stage++;
+
+    }
+
+}
 
 // invader class
 class Invader {
@@ -75,6 +102,7 @@ function setup() {
     invaders = [];
     shots = [];
     invader_shots = [];
+    explosions = [];
     createCanvas(document.documentElement.clientWidth-10,document.documentElement.clientHeight-10);
     background(20);
     fill(255);
@@ -172,12 +200,25 @@ function draw() {
         }
 
 
+        for(var i=0;i<explosions.length;i++) {
+
+            try {
+
+                if (explosions[i].stage < 9) explosions[i].draw();
+                else explosions.splice(i,1);
+
+            } catch (e) {}
+
+        }
+
+
 
         // shot-invader collision handling
         for(var i=0;i<shots.length;i++) {
             for(var j=0;j<invaders.length;j++) {
                 try {
                     if(shots[i].x >= invaders[j].x && shots[i].x < invaders[j].x+50 && shots[i].y >= invaders[j].y && shots[i].y < invaders[j].y+50) {
+                        explosions.push(new Explosion(invaders[j].x,invaders[j].y));
                         move_wait -= 1.5;
                         shots.splice(i,1);
                         invaders.splice(j,1);
