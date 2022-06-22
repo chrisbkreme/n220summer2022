@@ -240,10 +240,10 @@ function draw() {
 
         // end screen 
         background(20);
-        if (invaders.length == 0) text('you win', canvas_width / 2, canvas_height / 2 - 30);
+        if (invaders.length == 0) text('you win', canvas_width / 2, canvas_height / 2 - 50);
         else text('you lose', canvas_width / 2, canvas_height / 2);
-        text('score: ' + score, canvas_width /2, canvas_height / 2 + 30);
-        text('press any key to restart', canvas_width  / 2, canvas_height / 2 + 60);
+        text('score: ' + score, canvas_width /2, canvas_height / 2 + 50);
+        text('press any key to restart', canvas_width  / 2, canvas_height / 2 + 100);
 
         if (mouseIsPressed === true || keyIsPressed === true) setup();
     }
